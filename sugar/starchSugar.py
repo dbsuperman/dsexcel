@@ -16,6 +16,13 @@ def ExistSheet(sheetNames,asheetName):
 
     return flage
 
+def getContenCell(mergedlist,acellpos):
+    #for amerg in mergedlist:
+        #print(amerg)
+        #print(absolute_coordinate(amerg))
+    return 'E2'
+
+
 
 #拆分淀粉糖厂
 def getFactory(orsheet,tarwb,tarsheetName):
@@ -47,8 +54,7 @@ def getSugar(orsheet,tarwb,tarsheetName):
     orcol=maxcol+str(maxrow)
     cellrang=orsheet['E4':orcol]
     outsheet=tarwb.create_sheet(tarsheetName,0)
-    for merg in orsheet.merged_cell_ranges:
-        print(merg)
+    ormerged=orsheet.merged_cell_ranges
     outrowcount=1
     titleFlag=True
     title=['日期','糖类型','地区','厂家','日产量','日库存','日均价','时间差','年度','周','周度产量','周五库存','周均价']
@@ -64,10 +70,24 @@ def getSugar(orsheet,tarwb,tarsheetName):
                 continue
             outrowcount+=1
             acol=column_index_from_string(acell.column)
+            #日期
+            #糖类型
+            #地区
+            #厂家
+            #日产量
             atile=orsheet.cell(row=3,column=acol).value
+            #日库存
+            #日均价
+            #时间差
+            #年度
             ayear=orsheet.cell(row=1,column=acol).value
+            #周
+            #周度产量
+            #周五库存
+            #周均价
+
             aweek=orsheet.cell(row=2,column=acol).value
-            #print(ayear)
+            print(ayear)
             #print(aweek)
 
     return True
